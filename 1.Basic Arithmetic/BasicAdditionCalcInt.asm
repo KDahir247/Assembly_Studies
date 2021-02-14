@@ -1,7 +1,8 @@
 .model flat, c
 
 ;Implementation for this Assembly File
-;extern "C" bool ArithmeticASM(int a, int b, int result[4]);
+;Addition,
+;extern "C" bool ArithmeticASM(int a, int b, int result[5]);
 
 .code
 ArithmeticASM proc
@@ -49,10 +50,14 @@ ArithmeticASM proc
 	div ecx ; divide eax by ecx and store it in eax and store the reminder in edx
 	mov dword ptr [ebx + 12], eax ; dword(4 byte) ptr add an offset of (4*3) to retrieve the next index in array result
 
+	;Modulo
+	mov dword ptr [ebx + 16], edx ; dword(4 byte) ptr add an offset of (4*4) to retrieve the next index in array result
+
+
 	mov eax, 1	;return true bool 
 
 	InvalidDivisor:
-	pop ebx
+	pop ebx 
 	pop ebp
 	ret
 
