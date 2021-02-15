@@ -1,6 +1,6 @@
 # X86AssemblyPratice
 Practicing MASM (Currently) x86 assembly to further understand what higher level code get compiled to from a compiler and be able to interpret it.
-Will Pratice FASM eventually and ARM.
+Will Practice FASM eventually and ARM.
 <br/>
 <br/>
 MASM exercise 
