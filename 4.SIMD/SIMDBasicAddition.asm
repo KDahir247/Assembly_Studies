@@ -22,7 +22,7 @@ MmxAdd proc
 	
 	movd edx, mm2 ;we are storing the first half of mm2 to edx 
 				  ; ex. MM2 = 12100E0C1A181614
-				  ;		EDX =		  1A181614
+				  ;	EDX =	      1A181614
 
 	emms ;Clear the mmx register and set the value of the floating point tag word to empty. Reusing the mmx register without emptying will result in unexpected behaviour and slow performance
 	
