@@ -1,7 +1,7 @@
 .model flat, c
 
 ;Implementation for this Assembly File
-;Addition,
+;Addition,Subtraction,Multiplication,Division,Modulo
 ;extern "C" bool ArithmeticASM(int a, int b, int result[5]);
 
 .code
