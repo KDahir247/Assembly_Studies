@@ -37,9 +37,9 @@ end
 ;
 ;int main()
 ;{
-;	__declspec(align(16)) Xmm a{5,20,30,1,20,-25,-35, -20};
-;	__declspec(align(16)) Xmm b { 1, 2, 5, 30, -12, -22, -30, 20 };
-;
+;	
+;__declspec(align(16)) Xmm a{5,20,30,1,-20,-25,-35, -20};
+;__declspec(align(16)) Xmm a{5,20,30,1,-20,-25,-35, -20};
 ;	__declspec(align(16)) Xmm c{};
 ;
 ;
