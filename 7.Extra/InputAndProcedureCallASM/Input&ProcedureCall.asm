@@ -7,7 +7,7 @@
 includelib msvcrt.lib ;C standard library for the visual c++ (MicroSoft Visual C Runtime)
 
 .data
-;10 is new line and 0 is null (ASCIITABLE DEC) prevent getting the full byte in the invocation. Must now specify the Text Offset
+;10 is new line and 0 is null (ASCII TABLE DEC) prevent getting the full byte in the invocation. Must now specify the Text Offset
 	
 	;Initializing byte data (8 bit)
 	Text db 'Hello enter a single signed digit number: ',10, 0 ; 44 byte
@@ -17,6 +17,7 @@ includelib msvcrt.lib ;C standard library for the visual c++ (MicroSoft Visual C
 	Operation db 'Addition = ',0 ; 12 bytes
 			  db 'Subtraction = ',0 ;15 bytes
 			  db 'Multiplication = ',0 ;18 bytes
+			  db 'Division = ', 0
 .code
 
 printf PROTO C : VARARG ; Printf function prototype that take multiple args in C.c
@@ -46,6 +47,7 @@ GetInput proc
 
 	invoke printf, offset [Text + 88]; invoke printf function and pass Text with an offset of 88 byte on the address which will print till the null (0)
 
+
 	call Calculate ; Call Calculate procedure from GetInput procedure
 GetInput endp
 
@@ -66,6 +68,13 @@ Calculate proc
 	mul ecx ; We multiply eax with ecx (first input * second input) and store it in eax
 
 	invoke PrintResult, offset [Operation + 27], eax ; invoke PrintResult function that take a char const* and a int to print the operation and value
+
+	CALL SetRegistry ;  Call SetRegistry procedure from Calculate		
+	xor edx, edx ; we have to clear out edx register since it us used by div instruction. Not doing so will most in a integer overflow
+	div ecx ; divide eax from ecx (first input / second input) and store it in eax
+
+	invoke PrintResult, offset [Operation + 45], eax ; invoke PrintResult function that take a char const* and a int to print the operation and value
+
 
 	add esp,8 ; We de-allocated the 8 byte of stack space
 	pop ebp ; We pop the pushed 32 bit base register 
