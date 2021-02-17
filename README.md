@@ -5,7 +5,7 @@ Will Practice FASM eventually and ARM.
 <br/>
 MASM exercise 
 <br/>
-Basic Arithmetic, Floating Point, String, SIMD, SSE, AVX
+Basic Arithmetic, Floating Point, String, SIMD, SSE, AVX, and other misc like Input,Output, etc
 
 
 <br/>
