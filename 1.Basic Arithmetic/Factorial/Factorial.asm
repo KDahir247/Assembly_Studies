@@ -1,5 +1,8 @@
 .686	
 .model flat, stdcall, c
+;Implementation for this Assembly File
+;Requires C.c file as well
+;extern  "C" void Factorial();
 
 ; C standarad library for the visual c++ (MicroSoft Visual C Runtime) which we are including
 includelib msvcrt.lib
