@@ -1,5 +1,7 @@
 .686
 .model flat, c
+;This is a branchless solution 
+
 ;Implementation for this Assembly File
 ;extern "C" void NumPosNegOrZero();
 
