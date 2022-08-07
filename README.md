@@ -12,3 +12,8 @@ Basic Arithmetic, Floating Point, String, SIMD, SSE, AVX, and other misc like in
 Inspired by Mike Acton talk regarding to Data Oriented 
 Display the importance of reading/writting assembly for truly understanding what happens to your code.
 https://www.youtube.com/watch?v=rX0ItVEVjHc&t=268s
+
+<br/>
+
+<br/>
+<b> Plus I enjoy writing in Assembly!! </b>
