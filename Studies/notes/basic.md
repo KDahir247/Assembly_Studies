@@ -58,7 +58,7 @@ Some common condition instruction are cmovcc, jcc, setcc where cc is replace wit
 there are more conditional instruction than these 3 provided, but their mnemonic suffix are all the same </br>
 Note that some mnemonic suffixes are for signed integer type (e.g. Less and Greater) while other are for unsigned integer type (e.g. Above and Below)   
 
-Conditional instruction can improve readability and improve "performance" (not entirely true may even deteriorate performance) in a sense that is oblivious to branch prediction in some cases.
+Conditional instruction can improve readability and improve "performance" (not entirely true may even deteriorate performance) in a sense that is oblivious to branch prediction.
 This will avoid cost of potential branch predication which can cost up to 10 to 20 cycle.
 
 If a branch can is easily predictable use a jmp, which will almost un-likely cause a branch mis-predication which is faster
