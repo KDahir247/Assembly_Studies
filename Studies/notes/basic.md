@@ -100,9 +100,11 @@ ____
 Passing the first four integer parameter will be passed to the following RCX register, RDX register, R8 register, and R9 register in masm.
 The floating point type will be stored in the XMM SSE register in the following order XMM0, XMM1, XMM2, XMM3.
 
-E.G <br/>
-`extern "C" int add_mul(int a, int b, int c, int d); `<br/>
+E.G
+
+`extern "C" int add_mul(int a, int b, int c, int d); `
+
 where argument: RCX = a, RDX = b, R8 = c, R9 = d
-=======
+____
 there are many other ways to minimize branch mis  predication or remove it entirely.
 
