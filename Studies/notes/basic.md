@@ -106,4 +106,4 @@ E.G <br/>
 where argument: RCX = a, RDX = b, R8 = c, R9 = d
 =======
 there are many other ways to minimize branch mis  predication or remove it entirely.
->>>>>>> 68378aaac159a9c3840ef3889b04281eb0ee40e4
+
