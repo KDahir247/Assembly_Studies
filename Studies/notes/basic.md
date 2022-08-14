@@ -73,7 +73,7 @@ Some common condition instruction are cmovcc, jcc, setcc where cc is replace wit
 there are more conditional instruction than these 3 provided, but their mnemonic suffix are all the same </br>
 Note that some mnemonic suffixes are for signed integer type (e.g. Less and Greater) while other are for unsigned integer type (e.g. Above and Below)   
 
-Conditional instruction can improve readability and improve "performance" (not entirely true may even deteriorate performance) in a sense that is oblivious to branch prediction in some cases.
+Conditional instruction can improve readability and improve "performance" (not entirely true may even deteriorate performance) in a sense that is oblivious to branch prediction.
 This will avoid cost of potential branch predication which can cost up to 10 to 20 cycle.
 
 If a branch can is easily predictable use a jmp, which will almost un-likely cause a branch mis-predication which is faster
@@ -95,6 +95,7 @@ E.g if `(array[i] > 0) some_function_call();` and `(array[i] == 1) call_function
 7) Optimized chain of if/else and reduce it.
 8) avoid inner condition/s inside other condition/s
 
+<<<<<<< HEAD
 ____
 
 Passing the first four integer parameter will be passed to the following RCX register, RDX register, R8 register, and R9 register in masm.
@@ -103,3 +104,6 @@ The floating point type will be stored in the XMM SSE register in the following 
 E.G <br/>
 `extern "C" int add_mul(int a, int b, int c, int d); `<br/>
 where argument: RCX = a, RDX = b, R8 = c, R9 = d
+=======
+there are many other ways to minimize branch mis  predication or remove it entirely.
+>>>>>>> 68378aaac159a9c3840ef3889b04281eb0ee40e4
