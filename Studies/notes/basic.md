@@ -95,7 +95,6 @@ E.g if `(array[i] > 0) some_function_call();` and `(array[i] == 1) call_function
 7) Optimized chain of if/else and reduce it.
 8) avoid inner condition/s inside other condition/s
 
-<<<<<<< HEAD
 ____
 
 Passing the first four integer parameter will be passed to the following RCX register, RDX register, R8 register, and R9 register in masm.
