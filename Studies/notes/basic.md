@@ -1,4 +1,3 @@
-
 # Operand type
 
 _Small table to distinguish the difference_
@@ -17,6 +16,22 @@ _Small table to distinguish the difference_
 |---------------|---------------|----------------|----------------|
 | `sub AL, CL`  | `sub AX, CX`  | `sub EAX, ECX` | `sub RAX, RCX` |
 | `add BL, R8B` | `add BX, R8W` | `add EBX, R8D` | `add RBX, R8 ` |
+
+## List of all bit size registers
+
+| Register (64, 32, 16, 8)                     | Description                                                                                           |
+|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
+| RAX, EAX, AX, AL                             | The accumulator register. Used in arithmetic operation and is almost always the return type           |
+| RCX, ECX, CX, CL                             | Used in shift/rotate instruction and is the counter in loops from looping instruction, First Argument |
+| RDX, EDX, DX, DL                             | arithmetic operations and I/O operations, Second Argument                                             |
+| RBX, EBX, BX, BL                             | Used as a pointer to data                                                                             |
+| RSP, ESP, SP, SPL                            | register that contains the pointer to the top of the stack                                            |
+| RBP, EBP, BP, BPL                            | register that is used to point to the base of the stack                                               |
+| RSI, ESI, SI, SIL                            | source index for string operations                                                                    |
+| RDI, EDI, DI, DIL                            | destination index for string operations                                                               |
+| R8 - R15, R8D - R15D, R8W - R15W, R8B - R15B | general register, R8 third argument, R9 fourth argument                                               |
+
+#### There is also RIP, but I've intentionally left this out since you should never try to manipulate. RIP register store an offset address to point to the next instruction to be executed.
 
 
 ##### **Notes**
@@ -80,4 +95,11 @@ E.g if `(array[i] > 0) some_function_call();` and `(array[i] == 1) call_function
 7) Optimized chain of if/else and reduce it.
 8) avoid inner condition/s inside other condition/s
 
-there are many other ways to minimize branch mis  predication or remove it entirely.
+____
+
+Passing the first four integer parameter will be passed to the following RCX register, RDX register, R8 register, and R9 register in masm.
+The floating point type will be stored in the XMM SSE register in the following order XMM0, XMM1, XMM2, XMM3.
+
+E.G <br/>
+`extern "C" int add_mul(int a, int b, int c, int d); `<br/>
+where argument: RCX = a, RDX = b, R8 = c, R9 = d
