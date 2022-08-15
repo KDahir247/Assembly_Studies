@@ -4,7 +4,7 @@
 #include <iostream>
 
 
-extern "C" int int_mul_div(int a, int b, int* product, int* quo, int* rem);
+extern "C" void int_mul_div(int a, int b, int* product, int* quo, int* rem);
 
 extern "C" unsigned int value = 0;
 
@@ -13,7 +13,7 @@ int main()
     int a = 45; int b = 23;
     int prodt{1}; int quo{2}; int rem{3};
 
-    int res = int_mul_div(a, b, &prodt, &quo, &rem);
+    int_mul_div(a, b, &prodt, &quo, &rem);
 
 
     std::cout << "product is " << prodt << std::endl;
