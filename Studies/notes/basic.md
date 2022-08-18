@@ -33,6 +33,25 @@ _Small table to distinguish the difference_
 
 #### There is also RIP, but I've intentionally left this out since you should never try to manipulate. RIP register store an offset address to point to the next instruction to be executed.
 
+## Volatile Register vs Non-Volatile Register
+
+### Volatile Register
+
+----
+Caller Saved
+
+These general-purpose registers usually hold temporary values.
+
+Scratch registers presumed to be destroyed across a call.
+
+### Non-Volatile Register
+Callee saved 
+
+The other registers are used to hold long-lived values.
+
+Non-register is a type of register with contents that must be preserved over subroutine call.
+Whenever a non-volatile register is changed by the routine, the old value has to saved on the
+stack prior to changing the register and that value has to be restored before returning
 
 ##### **Notes**
 
