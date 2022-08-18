@@ -40,12 +40,16 @@ _Small table to distinguish the difference_
 ----
 Caller Saved
 
+RAX, RCX, RDX, R8, R9, R10, R11
+
 These general-purpose registers usually hold temporary values.
 
 Scratch registers presumed to be destroyed across a call.
 
 ### Non-Volatile Register
 Callee saved 
+
+RBX, RBP, RDI, RSI, RSP, R12, R13, R14, R15
 
 The other registers are used to hold long-lived values.
 
