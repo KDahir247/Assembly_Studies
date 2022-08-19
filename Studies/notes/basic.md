@@ -57,7 +57,34 @@ Non-register is a type of register with contents that must be preserved over sub
 Whenever a non-volatile register is changed by the routine, the old value has to saved on the
 stack prior to changing the register and that value has to be restored before returning
 
-##### **Notes**
+##### *Notes*
+
+Non-volatile register are popped from the stack in the reverse of how they were initially push on to the stack.
+
+E.G
+
+````
+some_procedure PROC FRAME
+
+    push RBX
+    .pushreg RBX ; assembler-maintained table that is used to unwind the stack during exception processing
+    push RSI
+    .pushreg RSI
+    push R13
+    .pushreg R13
+    
+    ; logic
+    
+    
+    pop R13
+    pop RSI
+    pop RBX
+    
+some_procedure ENDP
+
+ENDP
+
+````
 
 -----
 x86-64 platform restrict legacy registers. They can not be used with instruction that also reference the newer 8 bit register <br/>
