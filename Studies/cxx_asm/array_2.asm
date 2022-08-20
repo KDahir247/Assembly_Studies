@@ -15,11 +15,11 @@ prolog:
 	.endprolog
 
 	; handle case where nrows and/or ncols is zero
-	test R8D, R8D
-	jz prolog
+	test R8D, R8D ; AND bitwise operation from src and dst and set the RFLAG then throw away result
+	jz epilog ; jmp to epilog if zero flag is set
 
-	test R9D, R9D
-	jz prolog
+	test R9D, R9D ; AND bitwise operation from src and dst and set the RFLAG then throw away result
+	jz epilog ; jmp to epilog if zero flag is set
 	
 
 	mov RSI, RDX ; rsi = x (const int*)
@@ -28,8 +28,10 @@ prolog:
 
 	; loop and inner loop logic
 
+; RDX is J inner loop counter
+; RCX is I outer loop counter
 outer_loop: 
-	xor RDX, RDX ; j
+	xor RDX, RDX ; RDX = 0. 
 inner_loop: 
 	mov RAX, RDX ; RAX = j
 	imul RAX, R9 ; RAX = j * num_col
