@@ -29,7 +29,7 @@ entry:
 	jle epilog ; jump to label epilog if R9 < 0
 
 	movsxd R10, DWORD PTR [RSP + 64] ; move ncols to R10 and set the rest of the bits to the signed value of ncols 
-									 ; Eg. ncols = 5, R10(HEX) = 0000000000000005, ncols = -5, R10(HEX) = FFFFFFFFFFFFFFF5
+									 ; Eg. ncols = 5, R10(HEX) = 0000000000000005, ncols = -5, R10(HEX) = FFFFFFFFFFFFFFFB
 									 
 	cmp R10, 0 ; compare R10 with 0
 	jle epilog ; jump to label epilog if R10 < 0
