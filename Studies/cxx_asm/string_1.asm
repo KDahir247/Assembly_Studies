@@ -9,6 +9,7 @@ count_char proc frame
 ; RDX = char
 
 prolog:
+; non-volatile register are push to the stack to preserve value when non-volatile register is manipulated
 ; We need RSI register as well for lodsb instruction 
 	push RSI
 	.pushreg RSI
