@@ -44,4 +44,6 @@ int main()
 	}
 	std::cout << std::endl;
 
+	std::cout << "Error Code(1 = success, 0 = fail): " << err_code << std::endl;
+
 }

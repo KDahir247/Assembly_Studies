@@ -16,6 +16,10 @@ prolog:
 	.pushreg RDI
 	.endprolog
 
+	xor RAX, RAX
+	cmp R8, 0
+	jle epilog
+
 	xor R9, R9 ; R9 = 0
 
 	mov R9, R8 ; R8 = len
@@ -40,6 +44,8 @@ inner_loop:
 
 	dec RCX ; RCX = RCX - 1
 	jnz inner_loop ; jump to inner_loop if the zero flag is not set. It will set when RCX reaches 0
+
+	mov RAX, 1
 
 epilog:
 	; pop non-volitale register to restore data
