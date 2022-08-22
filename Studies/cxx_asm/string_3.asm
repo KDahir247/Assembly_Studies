@@ -17,7 +17,7 @@ prolog:
 	.endprolog
 
 	xor RAX, RAX ; RAX = 0
-	cmp R8, 0 ; compare RAX with 0
+	cmp R8, 0 ; compare R8(len) with 0
 	jle epilog ; jump to epilog label if (R8(len) < 0) otherwise continue below
 
 	xor R9, R9 ; R9 = 0
