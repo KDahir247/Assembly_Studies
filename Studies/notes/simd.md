@@ -63,4 +63,21 @@ SSE also contains on register which is 32-bit register containing flags for cont
 - FZ (15 bit) mode will cause all underflowing operation to go to zero.
 - Rcc (14 to 13 bit) modes will determine how the lowest bit is generated <br/>
   (10b == round positive, 01b == round negative, 11b == round to zero, 00b round to nearest).
-- 
+- PM (12 bit) Precision mask
+- UM (11 bit) Underflow mask
+- OM (10 bit) Overflow mask
+- ZM (9 bit) Divide by zero mask
+- DM (8 bit) Denormal Mask
+- IM (7 bit) Invalid Operation Mask
+- DAZ (6 bit) Denormals are zero (forces all denormals to zero)
+- PE (5 bit) Precision flag
+- UE (4 bit) Underflow flag
+- OE (3 bit) Overflow flag
+- ZE (2 bit) Divide by zero flag
+- DE (1 bit) Denormal flag
+- IE (0 bit) Invalid Operation flag
+
+Mask tell the processor to ignore the exception that happens, if they do.
+
+Exception flag are set if they happen, and aren't unmasked. These bits are sticky, which means once set they will always be set until it is manually unset.
+This mean that exception that are set maybe be caused several operation ago, but nobody cleared them.
