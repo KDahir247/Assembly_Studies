@@ -43,3 +43,24 @@ SSE instruction happens to all sixteen 8-bit data type (Byte, SByte) simultaneou
 |------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|
 | 7 0  | 7 0  | 7 0  | 7 0  | 7 0  | 7 0  | 7 0  | 7 0  | 7 0  | 7 0  | 7 0  | 7 0  | 7 0  | 7 0  | 7 0  | 7 0  |
 
+
+----
+
+### MXCXR register
+
+SSE also contains on register which is 32-bit register containing flags for control and status information regarding SSE instruction.
+
+| 31 bits  to 16 bits | 15 bit | 14 bit to 13 bit | 12 bit | 11 bit | 10 bit | 9 bit | 8 bit | 7 bit | 6 bit |
+|---------------------|--------|------------------|--------|--------|--------|-------|-------|-------|-------|
+| reserved            | FZ     | Rcc              | PM     | UM     | OM     | ZM    | DM    | IM    | DAZ   |
+
+| 5 bit | 4 bit | 3 bit | 2 bit | 1 bit | 0 bit |
+|-------|-------|-------|-------|-------|-------|
+| PE    | UE    | OE    | ZE    | DE    | IE    |
+
+
+
+- FZ (15 bit) mode will cause all underflowing operation to go to zero.
+- Rcc (14 to 13 bit) modes will determine how the lowest bit is generated <br/>
+  (10b == round positive, 01b == round negative, 11b == round to zero, 00b round to nearest).
+- 
