@@ -20,7 +20,7 @@ calc_sphere_area_vol proc
 
 	vmovsd XMM2, [FOUR_DIV_THREE_REAL8] ; XMM2 = 1.333333333333333
 	vmulsd XMM2, XMM3, XMM2 ;  XMM2 = r * 3.14... * r * 1.33333333
-	vmulsd XMM2, XMM2, XMM0 ; XMM0 = r * 3.14... * r * 1.33333333 * 
+	vmulsd XMM2, XMM2, XMM0 ; XMM0 = r * 3.14... * r * 1.33333333 * r
 	; or re-written as 4/3*PI*r*r*r
 
 	vmovsd real8 ptr[RDX], XMM1 ; real8 ptr of RDX = XMM1 (lower 4 bytes)
