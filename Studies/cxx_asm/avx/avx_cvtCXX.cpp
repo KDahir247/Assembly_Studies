@@ -16,6 +16,7 @@ extern "C" void set_msxcr_rounding(unsigned int id);
 
 int main()
 {
+	int old_round = get_mxcsr_rounding();
 	set_msxcr_rounding(1);
 
 	int a{};
@@ -42,5 +43,6 @@ int main()
 	}
 
 	std::cout << "rounded value is " << a << std::endl;
-
+	
+	set_msxcr_rounding(old_round); // preserve rounding at function boundaries according to Visual C++ calling convention
 }
