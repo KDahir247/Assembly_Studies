@@ -6,10 +6,10 @@ add_all_frame proc frame
 	
 	push rbp
 	.pushreg RBP
-	mov RBP, RSP ; [parmeter........, RBP]
-	.setframe rbp, 0
-	sub RSP, 16 ;  [parameter...., RBP , local_var_8, local_var_8] 
+	sub RSP, 16 ;  [parameter...., local_var_8, local_var_8] 
 	.allocstack 16
+	lea RBP, [RSP + 16] ; [parameter...., RBP , local_var_8, local_var_8] 
+	.setframe rbp, 16
 	.endprolog
 
 	movsx RCX, CL ; RCX = a
