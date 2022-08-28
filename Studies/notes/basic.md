@@ -40,7 +40,11 @@ _Small table to distinguish the difference_
 ----
 Caller Saved
 
+general registers: 
 RAX, RCX, RDX, R8, R9, R10, R11
+
+SSE registers:
+XMM0, XMM1, XMM2, XMM3, XMM4, XMM5
 
 These general-purpose registers usually hold temporary values.
 
@@ -49,7 +53,11 @@ Scratch registers presumed to be destroyed across a call.
 ### Non-Volatile Register
 Callee saved 
 
+general registers: 
 RBX, RBP, RDI, RSI, RSP, R12, R13, R14, R15
+
+SSE registers:
+XMM6, XMM7, XMM8, XMM9, XMM10, XMM11, XMM12, XMM13, XMM14, XMM15
 
 The other registers are used to hold long-lived values.
 
@@ -155,6 +163,33 @@ E.G
 `extern "C" int add_mul(int a, int b, int c, int d); `
 
 where argument: RCX = a, RDX = b, R8 = c, R9 = d
-____
+
 there are many other ways to minimize branch mis  predication or remove it entirely.
 
+____
+
+# Leaf Function 
+
+leaf function is a function that calls no other functions. Leaf function can run more efficiently. Some compilers can apply special program optimization, such as the use of link registers.
+There are some condition for a function to be a leaf function.
+
+1) Function makes not call to other function.
+2) Don't allocate any local stack space
+3) Don't modify any non-volatile register (general and/or sse)
+4) Don't use exception handling
+5) Don't modify the RSP register
+6) Only use register for its own variables and temporaries 
+
+
+We use the term “leaf function” to mean a function that is suitable for this special handling, so that functions with no calls are not necessarily “leaf functions”.
+
+E.G 
+Leaf function with many variables may need to use the stack
+
+Note:
+
+Keep function really short and reduce local variables and parameter for the function. You only have a handful of caller saved registers.
+
+Eliminate exception handling on short primitive function, since this may introduce internal function calls depending on the programming language used to handle the exception or handle potential exception from function outside prior to calling your leaf function if really needed (really unlikely).
+
+Use value type on leaf function.
