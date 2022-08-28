@@ -193,3 +193,5 @@ Keep function really short and reduce local variables and parameter for the func
 Eliminate exception handling on short primitive function, since this may introduce internal function calls depending on the programming language used to handle the exception or handle potential exception from function outside prior to calling your leaf function if really needed (really unlikely).
 
 Use value type on leaf function.
+
+keep in mind about calling convention if your function is non leaf function. For example stack allocation on non leaf function on Visual C++ calling convention requires non leaf function to maintain 16 byte alignment for the stack pointer. 
