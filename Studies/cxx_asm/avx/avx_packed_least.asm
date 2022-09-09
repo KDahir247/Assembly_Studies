@@ -17,7 +17,6 @@ avx_calc_least_sqrs proc frame
 	sub RSP, 30h ; 48
 
 	.ENDPROLOG
-
 	vmovapd REAL8 PTR [RBP - 16], XMM6
 	vmovapd REAL8 PTR [RBP - 32], XMM7
 	vmovapd REAL8 PTR [RBP - 48], XMM8
