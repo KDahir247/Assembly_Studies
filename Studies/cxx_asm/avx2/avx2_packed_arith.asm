@@ -47,7 +47,14 @@ avx_pck_math_f32 proc
 	vmaxps YMM2, YMM0, YMM1
 	vmovaps YMMWORD PTR [R8 + 224], YMM2
 
+	; adding vzeroupper avoid penalty for transitioning from AVX 256 bit wide to sse
+	; accesses the ymm registers, must use VEX encoding.
+	; VEX also allows dest, src0, src1 encoding, rather than destAndSrc0, src1
+	; Eg of vex encoding VMINPS xmm1, xmm2, xmm3 (dst, src0, src1)
+	; Eg of non vex encoding  MINPS xmm1, xmm2 (dst and src0, src1) override src0
 
+	vzeroupper
+	
 	ret
 avx_pck_math_f32 endp
 
