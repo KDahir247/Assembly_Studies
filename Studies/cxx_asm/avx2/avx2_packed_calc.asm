@@ -7,7 +7,7 @@ THREE real4 3.0
 .data
 
 .code
-avx2_calc_sphere_area_volume proc
+avx2_calc_sphere_area_volume proc frame
 	; extern "C" void avx2_calc_sphere_area_volume(float* surface_area, float* volume, const float* radius, size_t n);
 	; RCX = surface area, RDX = volume, R8 = radius, R9 = n
 	
@@ -18,6 +18,19 @@ avx2_calc_sphere_area_volume proc
 	; YMM4 = ZERO
 	; YMM5 = radius 
 
+	push RBP
+	.pushreg RBP
+	mov RBP, RSP
+	and RSP, -16
+
+	sub RSP, 40h
+
+	.ENDPROLOG
+
+	vmovaps REAL4 PTR [RBP - 16], XMM6
+	vmovaps REAL4 PTR [RBP - 32], XMM7
+	vmovaps REAL4 PTR [RBP - 48], XMM8
+	vmovaps REAL4 PTR [RBP - 64], XMM9
 
 	vbroadcastss YMM0, REAL4 PTR [PI]
 	vbroadcastss YMM1, REAL4 PTR [QUIET_NAN_F32]
@@ -45,7 +58,6 @@ avx_loop:
 	vmulps YMM9, YMM9, YMM9 
 	vmulps YMM9, YMM9, YMM2
 
-
 	vmulps YMM0, YMM9, YMM5
 
 	vdivps YMM0, YMM0, YMM3
@@ -57,8 +69,6 @@ avx_loop:
 	sub R9, 8
 	cmp R9, 8
 	jge avx_loop
-
-
 
 
 scalar_loop:
@@ -83,14 +93,19 @@ scalar_loop:
 	vmovss REAL4 PTR [RCX + RAX], XMM9
 	vmovss REAL4 PTR [RDX + RAX], XMM0
 
-
 	add RAX, 4
 	dec R9
 	jmp scalar_loop
 
 
-
 done:
+	vmovaps XMM6, REAL4 PTR [RBP - 16]
+	vmovaps XMM7, REAL4 PTR [RBP - 32]
+	vmovaps XMM8, REAL4 PTR [RBP - 48]
+	vmovaps XMM9, REAL4 PTR [RBP - 64]
+
+	leave
+
 	vzeroupper
 	ret
 avx2_calc_sphere_area_volume endp
